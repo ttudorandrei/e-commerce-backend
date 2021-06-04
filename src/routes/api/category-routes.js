@@ -3,10 +3,18 @@ const { Category, Product } = require("../../models");
 
 // The `/api/categories` endpoint
 
+// ~~~~~~~~~~ "include" WIP
 router.get("/", async (req, res) => {
   // find all categories
   try {
-    const categoryData = await Category.findAll();
+    const categoryData = await Category.findAll({
+      include: [
+        {
+          model: Product,
+          attributes: ["product_name"],
+        },
+      ],
+    });
     res.json(categoryData);
   } catch (error) {
     console.log(`[ERROR]: ${error.message}`);
@@ -32,16 +40,30 @@ router.get("/:id", async (req, res) => {
 
 // ~~~~~~~~~~~ WIP
 router.post("/", async (req, res) => {
+  const { categoryName } = req.body;
   // create a new category
+  try {
+    const newCategoryData = {
+      category_name: categoryName,
+    };
+
+    const newCategory = await Category.create(newCategoryData);
+    res.json(newCategory);
+  } catch (error) {
+    console.log(`[ERROR]: ${error.message}`);
+    res.status(500).json({
+      error: "Failed to post specified category",
+    });
+  }
 });
 
 // ~~~~~~~~~~~ WIP
 router.put("/:id", async (req, res) => {
   // update a category by its `id` value
   try {
-    const categoryData = await Category.update(req.body, {
+    const categoryData = await Category.update(req.body.category_name, {
       where: {
-        id: req.params.id,
+        id: +req.params.id,
       },
     });
     res.json(categoryData);
