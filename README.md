@@ -17,6 +17,7 @@
   - [Questions](#questions)
   - [Link to GitHub repository](#link-to-github-repository)
   - [Link to Video Recording demonstrating the working application](#link-to-video-recording-demonstrating-the-working-application)
+  - [Link to Deployed application on Heroku](#link-to-deployed-application-on-heroku)
 
 ## Licence
 
@@ -47,6 +48,9 @@ SOFTWARE.
 This is an E-commerce api that allows the user to view, add, modify or delete _Products_, the _Categories_ that the _Products_ are part of and the _Products Tags_.
 
 ## Schema
+
+This is the schema for the E-Commerce Backend Application:  
+![e-commerce backend schema](./public/assets/images/e-commerce-backend-schema.PNG)
 
 ## Installation
 
@@ -128,6 +132,8 @@ The installation steps are as follows:
 - run `npm run start` to run the server;
 - open the server in your _Insomnia_ or _Postman_ and try the different _GET_, _POST_, _PUT_ and _DELETE_ methods;
 
+**Alternatively** you can use the Heroku deployment link and Postman to test the deployed application;
+
 ## Questions
 
 For any questions regarding this app, please contact me via:
@@ -142,3 +148,7 @@ You can view the GitHub Repository by clicking [here](https://github.com/ttudora
 ## Link to Video Recording demonstrating the working application
 
 You can view a recording of the working application by clicking [here](#)
+
+## Link to Deployed application on Heroku
+
+You ca view the deployed application on Heroku by clicking [here](https://e-commerce-backendd.herokuapp.com/)
