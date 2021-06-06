@@ -47,15 +47,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   // create a new tag
-  const { tag_name } = req.body;
-  // create a new tag
   try {
-    console.log(tag_name);
-    const newTagData = {
-      tag_name: tag_name,
-    };
-
-    const newTag = await Tag.create(newTagData);
+    const newTag = await Tag.create(req.body);
     res.json(newTag);
   } catch (error) {
     console.log(`[ERROR]: ${error.message}`);

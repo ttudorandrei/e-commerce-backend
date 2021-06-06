@@ -46,14 +46,9 @@ router.get("/:id", async (req, res) => {
 
 // ~~~~~~~~~~~ WIP
 router.post("/", async (req, res) => {
-  const { categoryName } = req.body;
   // create a new category
   try {
-    const newCategoryData = {
-      category_name: categoryName,
-    };
-
-    const newCategory = await Category.create(newCategoryData);
+    const newCategory = await Category.create(req.body);
     res.json(newCategory);
   } catch (error) {
     console.log(`[ERROR]: ${error.message}`);
@@ -69,7 +64,7 @@ router.put("/:id", async (req, res) => {
   try {
     const categoryData = await Category.update(req.body, {
       where: {
-        id: +req.params.id,
+        id: req.params.id,
       },
     });
     res.json(categoryData);
