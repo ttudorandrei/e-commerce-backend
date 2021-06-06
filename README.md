@@ -147,7 +147,7 @@ You can view the GitHub Repository by clicking [here](https://github.com/ttudora
 
 ## Link to Video Recording demonstrating the working application
 
-You can view a recording of the working application by clicking [here](#)
+You can view a recording of the working application by clicking [here](https://drive.google.com/file/d/1Yk4tiex742kS9OOF4PJsbP79Kqhn7L64/view)
 
 ## Link to Deployed application on Heroku
 
