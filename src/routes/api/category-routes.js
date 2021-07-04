@@ -1,92 +1,17 @@
 const router = require("express").Router();
-const { Category, Product } = require("../../models");
 
-// The `/api/categories` endpoint
+const {
+  getAllCategories,
+  getCategoryById,
+  addCategory,
+  updateCategory,
+  deleteCategory,
+} = require("../../controllers/categories");
 
-router.get("/", async (req, res) => {
-  // find all categories
-  try {
-    const categoryData = await Category.findAll({
-      include: [
-        {
-          model: Product,
-          attributes: ["product_name"],
-        },
-      ],
-    });
-    res.json(categoryData);
-  } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
-    res.status(500).json({
-      error: "Failed to get categories",
-    });
-  }
-});
-
-router.get("/:id", async (req, res) => {
-  // find one category by its `id` value
-  // be sure to include its associated Products
-  try {
-    const categoryData = await Category.findByPk(req.params.id, {
-      include: [
-        {
-          model: Product,
-          attributes: ["product_name"],
-        },
-      ],
-    });
-    res.json(categoryData);
-  } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
-    res.status(500).json({
-      error: "Failed to get specified category",
-    });
-  }
-});
-
-// ~~~~~~~~~~~ WIP
-router.post("/", async (req, res) => {
-  // create a new category
-  try {
-    const newCategory = await Category.create(req.body);
-    res.json(newCategory);
-  } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
-    res.status(500).json({
-      error: "Failed to post specified category",
-    });
-  }
-});
-
-// ~~~~~~~~~~~ WIP
-router.put("/:id", async (req, res) => {
-  // update a category by its `id` value
-  try {
-    const categoryData = await Category.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    res.json(categoryData);
-  } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
-    res.status(400).jason({ error: "Failed to update specified category" });
-  }
-});
-
-router.delete("/:id", async (req, res) => {
-  // delete a category by its `id` value
-  try {
-    const categoryData = await Category.destroy({
-      where: {
-        id: +req.params.id,
-      },
-    });
-    res.json(categoryData);
-  } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
-    res.status(400).json({ error: "Failed to delete specified category" });
-  }
-});
+router.get("/", getAllCategories);
+router.get("/:id", getCategoryById);
+router.post("/", addCategory);
+router.put("/:id", updateCategory);
+router.delete("/:id", deleteCategory);
 
 module.exports = router;
