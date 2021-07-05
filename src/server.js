@@ -17,7 +17,7 @@ const init = async () => {
   try {
     await sequelize.sync();
     app.listen(PORT, () =>
-      console.log(`\nServer running on http://localhost:${PORT}\n`)
+      console.info(`\nServer running on http://localhost:${PORT}\n`)
     );
   } catch (error) {
     console.info(error);

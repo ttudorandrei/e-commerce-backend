@@ -17,7 +17,7 @@ const getAllProducts = async (req, res) => {
     });
     res.json(productData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to get products",
     });
@@ -41,7 +41,7 @@ const getProductById = async (req, res) => {
     });
     res.json(productData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to get specified product",
     });
@@ -62,7 +62,7 @@ const addProduct = async (req, res) => {
     const newProduct = await Product.create(req.body);
     res.json(newProduct);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to post specified product",
     });
@@ -77,7 +77,7 @@ const updateProduct = async (req, res) => {
     });
     res.json(productData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(400).jason({ error: "Failed to update specified product" });
   }
 };
@@ -92,7 +92,7 @@ const deleteProduct = async (req, res) => {
     });
     res.json(categoryData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(400).json({ error: "Failed to delete specified tag" });
   }
 };

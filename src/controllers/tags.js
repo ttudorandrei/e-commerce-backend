@@ -13,7 +13,7 @@ const getAllTags = async (req, res) => {
     });
     res.json(tagData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to get tags",
     });
@@ -33,7 +33,7 @@ const getTagById = async (req, res) => {
     });
     res.json(tagData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to get specified tag",
     });
@@ -46,7 +46,7 @@ const addTag = async (req, res) => {
     const newTag = await Tag.create(req.body);
     res.json(newTag);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to post specified tag",
     });
@@ -63,7 +63,7 @@ const updateTag = async (req, res) => {
     });
     res.json(tagData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(400).jason({ error: "Failed to update specified tag" });
   }
 };
@@ -78,7 +78,7 @@ const deleteTag = async (req, res) => {
     });
     res.json(tagData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(400).json({ error: "Failed to delete specified tag!" });
   }
 };

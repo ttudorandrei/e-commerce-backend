@@ -13,7 +13,7 @@ const getAllCategories = async (req, res) => {
     });
     res.json(categoryData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to get categories",
     });
@@ -33,7 +33,7 @@ const getCategoryById = async (req, res) => {
     });
     res.json(categoryData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to get specified category",
     });
@@ -46,7 +46,7 @@ const addCategory = async (req, res) => {
     const newCategory = await Category.create(req.body);
     res.json(newCategory);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(500).json({
       error: "Failed to post specified category",
     });
@@ -63,7 +63,7 @@ const updateCategory = async (req, res) => {
     });
     res.json(categoryData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(400).jason({ error: "Failed to update specified category" });
   }
 };
@@ -78,7 +78,7 @@ const deleteCategory = async (req, res) => {
     });
     res.json(categoryData);
   } catch (error) {
-    console.log(`[ERROR]: ${error.message}`);
+    console.info(`[ERROR]: ${error.message}`);
     res.status(400).json({ error: "Failed to delete specified category" });
   }
 };
